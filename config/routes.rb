@@ -6,8 +6,7 @@ Rails.application.routes.draw do
         get 'random'
       end
     end
-    resources :themes
-    get 'room/index'
+      get 'room/index'
   end
 
   mount ActionCable.server => '/cable'

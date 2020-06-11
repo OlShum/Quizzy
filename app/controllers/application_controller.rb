@@ -4,10 +4,12 @@ class ApplicationController < ActionController::Base
   def set_user
     # Проверить есть ли у гостя уже идентификатор
     guest_uuid = cookies[:guest_uuid]
+    puts "=========== GUEST UUID ==========="
+    puts guest_uuid
 
     # ЕСЛИ ЕСТЬ ТО
     if guest_uuid
-      # Найти последнюю активную корзину этого гостя
+      # Найти последнюю активную вопрос этого гостя
       @user = User.where(guest_uuid: guest_uuid).last
       @user ||= User.create!(guest_uuid: guest_uuid)
     # ЕСЛИ НЕТ ТО

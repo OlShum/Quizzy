@@ -12,6 +12,13 @@
 
   h1 {
     line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  .ThemeName {
+    color: #847cdf;
+    margin-top: 20px;
+    margin-bottom: 50px;
   }
 
   .Counter {
@@ -36,8 +43,22 @@
     color: #ffffff;
   }
 
-  .NextQuestion_button,
-  .End_button {
-    color: #dae0f2;
+  .NextQuestionButton:disabled,
+  .EndButton:disabled {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    background-color: #ff499e;
+  }
+
+  .NextQuestionButton,
+  .EndButton {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #ff499e;
+    border-radius: 5px;
+    border-style: none;
   }
 }

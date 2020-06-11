@@ -1,4 +1,5 @@
 import React from 'react'
+import { ActionCable } from 'react-actioncable-provider'
 
 export default class Lap extends React.Component {
   constructor(props) {
@@ -23,21 +24,23 @@ export default class Lap extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('HHHHHHEEEEEEEEEEEEYYYYYYYYYY')
     if (this.state.currentQuestion !== prevState.currentQuestion) {
-      fetch(`http://localhost:3000/api/questions/random.json`)
-        .then(response => {
-          return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          let { question_text, answer, option } = data
-          this.setState({
-            disabled: true,
-            questions: question_text,
-            answer,
-            options: JSON.parse(option)
-          })
-        })
+      this.loadQuestion()
+      // fetch(`http://localhost:3000/api/questions/random.json`)
+      //   .then(response => {
+      //     return response.json()
+      //   })
+      //   .then(data => {
+      //     console.log(data)
+      //     let { question_text, answer, option } = data
+      //     this.setState({
+      //       disabled: true,
+      //       questions: question_text,
+      //       answer,
+      //       options: JSON.parse(option)
+      //     })
+      //   })
     }
   }
 
@@ -71,12 +74,12 @@ export default class Lap extends React.Component {
   }
 
   nextQuestionHandler() {
-    console.log('test')
+    console.log('Next Question Button')
     const { myAnswer, answer, score } = this.state
 
     if (myAnswer === answer) {
       this.setState({
-        score: score + 1
+        score: score + 100
       })
     }
 
@@ -135,6 +138,10 @@ export default class Lap extends React.Component {
     return elements
   }
 
+  handleReceivedQuestions() {
+    console.log('hehe')
+  }
+
   render() {
     const { option, myAnswer, currentQuestion, isEnd } = this.state
 
@@ -148,14 +155,18 @@ export default class Lap extends React.Component {
       )
     } else {
       return (
-        <div className="App">
-          <h2>{/* //this.state.theme */}</h2>
+        <div className="QuestionBlock">
+          <ActionCable
+            channel={{ channel: 'QuizzroomChannel' }}
+            onReceived={this.handleReceivedQuestions}
+          />
+          <h2 className="ThemeName">Тема: {this.state.theme}</h2>
           <h1>{this.state.questions}</h1>
           <span className="Counter">{`Пройдено ${currentQuestion}  из ${5} вопросов `}</span>
           {this.renderOptions()}
           {currentQuestion < 4 && (
             <button
-              className="NextQuestion_button"
+              className="NextQuestionButton"
               disabled={this.state.disabled}
               onClick={this.nextQuestionHandler}
             >
@@ -165,7 +176,7 @@ export default class Lap extends React.Component {
           {/* //добавить кнопку финиша */}
           {currentQuestion === 4 && (
             <button
-              className="End_button"
+              className="EndButton"
               disabled={this.state.disabled}
               onClick={this.finishHandler}
             >
