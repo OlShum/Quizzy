@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :questions do
       collection do
         get 'random'
+        get 'check_answer'
+        get 'count_score'
       end
     end
       get 'room/index'

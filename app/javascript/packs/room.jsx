@@ -22,9 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let testContent = JSON.parse(props)
 
   ReactDOM.render(
-    <ActionCableProvider url="ws://localhost:3000/cable">
-      <App questions={testContent} />
-    </ActionCableProvider>,
+    <App questions={testContent} />,
     document.body.appendChild(document.createElement('div'))
   )
 })
