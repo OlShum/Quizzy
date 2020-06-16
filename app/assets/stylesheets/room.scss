@@ -1,37 +1,46 @@
-// Place all the styles related to the room controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.LoadingStyle {
+  margin-left: 47%;
+}
 
 .App {
   background-color: #dae0f2;
   color: #363b3e;
-  margin: 0 100px;
+  margin: 150px 100px;
   padding: 30px;
   border-radius: 20px;
   text-align: center;
 
   h1 {
+    font-family: 'Circe-Bold';
     line-height: 30px;
     margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: bold;
   }
 
   .ThemeName {
+    font-family: 'Circe-Regular';
     color: #847cdf;
     margin-top: 20px;
     margin-bottom: 50px;
+    font-size: 18px;
   }
 
   .Counter {
+    font-family: 'Circe-Bold';
     color: #ff499e;
     font-weight: bold;
+    margin-bottom: 40px;
   }
 
   .null,
   .selected {
-    padding: 10px;
+    font-family: 'Circe-Regular';
+    padding: 20px 10px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
+    margin-top: 20px;
   }
 
   .null {
@@ -45,20 +54,97 @@
 
   .NextQuestionButton:disabled,
   .EndButton:disabled {
+    font-family: 'Circe-Bold';
     width: 200px;
     height: 50px;
-    font-size: 15px;
+    font-size: 16px;
     background-color: #ff499e;
   }
 
   .NextQuestionButton,
   .EndButton {
+    font-family: 'Circe-Bold';
+    margin-top: 10px;
     width: 200px;
     height: 50px;
-    font-size: 15px;
+    font-size: 16px;
     color: #ffffff;
     background-color: #ff499e;
     border-radius: 5px;
     border-style: none;
+  }
+
+  .YouBlock,
+  .MeBlock {
+    position: absolute;
+    top: 40px;
+
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .MeBlock {
+    display: flex;
+
+    .MeMe,
+    .MeMeScore {
+      color: #dae0f2;
+      margin-left: 15px;
+      text-align: left;
+    }
+
+    .MeMe {
+      margin-top: 5px;
+      font-family: 'Circe-Bold';
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .MeMeScore {
+      font-family: 'Circe-Regular';
+      font-size: 15px;
+    }
+  }
+
+  .YouBlock {
+    display: flex;
+    right: 130px;
+
+    .YouYou,
+    .YouYouScore {
+      color: #dae0f2;
+      margin-right: 15px;
+      text-align: right;
+    }
+
+    .YouYou {
+      margin-top: 5px;
+      font-family: 'Circe-Bold';
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .YouYouScore {
+      font-family: 'Circe-Regular';
+      font-size: 15px;
+    }
+  }
+
+  .result {
+    img {
+      margin-top: 150px;
+      width: 130px;
+    }
+
+    h3 {
+      font-family: 'Circe-Bold';
+      font-size: 40px;
+      color: #ff499e;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 150px;
+    }
   }
 }

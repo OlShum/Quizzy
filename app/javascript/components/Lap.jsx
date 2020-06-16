@@ -1,6 +1,12 @@
 import React from 'react'
 import { ActionCable } from 'react-actioncable-provider'
 
+import Me from '../../assets/images/Me.png'
+import You from '../../assets/images/You.png'
+import Draw from '../../assets/images/Draw.png'
+import Fist from '../../assets/images/Fist.png'
+import Stars from '../../assets/images/Stars.png'
+
 export default class Lap extends React.Component {
   constructor(props) {
     super(props)
@@ -147,42 +153,69 @@ export default class Lap extends React.Component {
 
     if (isEnd) {
       return (
-        <div className="result">
-          <h3>
-            Игра закончена, количество набранных очков: {this.state.score}{' '}
-          </h3>
+        <div className="resultContainer">
+          <div className="MeBlock">
+            <img src={Me} />
+            <div className="MeText">
+              <p className="MeMe">Я</p>
+              <p className="MeMeScore">{this.state.score} </p>
+            </div>
+          </div>
+          <div className="YouBlock">
+            <div className="YouText">
+              <p className="YouYou">Соперник</p>
+              <p className="YouYouScore">{this.state.score} </p>
+            </div>
+            <img src={You} />
+          </div>
+          <div className="result">
+            <img src={Draw} />
+            <h3 className="GameOverCounter">Ничья</h3>
+          </div>
         </div>
       )
     } else {
       return (
-        <div className="QuestionBlock">
-          <ActionCable
-            channel={{ channel: 'QuizzroomChannel' }}
-            onReceived={this.handleReceivedQuestions}
-          />
-          <h2 className="ThemeName">Тема: {this.state.theme}</h2>
-          <h1>{this.state.questions}</h1>
-          <span className="Counter">{`Пройдено ${currentQuestion}  из ${5} вопросов `}</span>
-          {this.renderOptions()}
-          {currentQuestion < 4 && (
-            <button
-              className="NextQuestionButton"
-              disabled={this.state.disabled}
-              onClick={this.nextQuestionHandler}
-            >
-              Следующий вопрос
-            </button>
-          )}
-          {/* //добавить кнопку финиша */}
-          {currentQuestion === 4 && (
-            <button
-              className="EndButton"
-              disabled={this.state.disabled}
-              onClick={this.finishHandler}
-            >
-              Завершить
-            </button>
-          )}
+        <div className="QuestionBlockContainer">
+          <div className="MeBlock">
+            <img src={Me} />
+            <div className="MeText">
+              <p className="MeMe">Я</p>
+              <p className="MeMeScore">{this.state.score} </p>
+            </div>
+          </div>
+          <div className="YouBlock">
+            <div className="YouText">
+              <p className="YouYou">Соперник</p>
+              <p className="YouYouScore">{this.state.score} </p>
+            </div>
+            <img src={You} />
+          </div>
+          <div className="QuestionBlock">
+            <h2 className="ThemeName">Тема: {this.state.theme}</h2>
+            <h1>{this.state.questions}</h1>
+            <span className="Counter">{`Пройдено ${currentQuestion}  из ${5} вопросов `}</span>
+            {this.renderOptions()}
+            {currentQuestion < 4 && (
+              <button
+                className="NextQuestionButton"
+                disabled={this.state.disabled}
+                onClick={this.nextQuestionHandler}
+              >
+                Следующий вопрос
+              </button>
+            )}
+            {/* //добавить кнопку финиша */}
+            {currentQuestion === 4 && (
+              <button
+                className="EndButton"
+                disabled={this.state.disabled}
+                onClick={this.finishHandler}
+              >
+                Завершить
+              </button>
+            )}
+          </div>
         </div>
       )
     }

@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { ActionCableProvider } from 'react-actioncable-provider'
 
 import Lap from '../components/Lap'
+import Loading from '../components/Loading'
 
 const App = props => {
   // let questionElements = props.questions.map(function(question, i) {
@@ -12,7 +12,7 @@ const App = props => {
 
   return (
     <div className="App">
-      <Lap />
+      <Loading />
     </div>
   )
 }
@@ -22,9 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let testContent = JSON.parse(props)
 
   ReactDOM.render(
-    <ActionCableProvider url="ws://localhost:3000/cable">
-      <App questions={testContent} />
-    </ActionCableProvider>,
+    <App questions={testContent} />,
     document.body.appendChild(document.createElement('div'))
   )
 })

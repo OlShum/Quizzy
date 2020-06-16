@@ -1,14 +1,25 @@
 .Quizzy {
+  font-family: 'Circe-Regular';
   margin-top: 250px;
   color: #ff499e;
-  font-size: 250px;
+  font-size: 300px;
+}
+
+.DoIt {
+  margin-top: -70px;
+  margin-left: 20px;
+  font-family: 'Circe-Regular';
+  font-size: 35px;
+  color: #dae0f2;
 }
 
 .StartButton {
-  margin-top: 300px;
+  margin-left: 20px;
+  font-family: 'Circe-Bold';
+  margin-top: 150px;
   text-align: center;
   padding: 20px;
-  width: 300px;
+  width: 350px;
   height: 15px;
   background-color: #ff499e;
   color: #ffffff;
