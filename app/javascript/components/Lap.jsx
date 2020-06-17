@@ -4,8 +4,8 @@ import { ActionCable } from 'react-actioncable-provider'
 import Me from '../../assets/images/Me.png'
 import You from '../../assets/images/You.png'
 import Draw from '../../assets/images/Draw.png'
-import Fist from '../../assets/images/Fist.png'
 import Stars from '../../assets/images/Stars.png'
+import Lose from '../../assets/images/Lose.png'
 
 export default class Lap extends React.Component {
   constructor(props) {
@@ -158,13 +158,13 @@ export default class Lap extends React.Component {
             <img src={Me} />
             <div className="MeText">
               <p className="MeMe">Я</p>
-              <p className="MeMeScore">{this.state.score} </p>
+              <p className="MeMeScore">{this.state.score}</p>
             </div>
           </div>
           <div className="YouBlock">
             <div className="YouText">
               <p className="YouYou">Соперник</p>
-              <p className="YouYouScore">{this.state.score} </p>
+              <p className="YouYouScore">{this.state.score}</p>
             </div>
             <img src={You} />
           </div>
